@@ -35,7 +35,8 @@ const followersArray = [
   'dustinmyers',
   'justsml',
   'luishrd',
-  'bigknell'
+  'bigknell',
+  'garybot'
 ];
 
 /*
@@ -145,3 +146,4 @@ getProfiles(followersArray[2])
 getProfiles(followersArray[3])
 getProfiles(followersArray[4])
 getProfiles(followersArray[5])
+getProfiles(followersArray[6])
