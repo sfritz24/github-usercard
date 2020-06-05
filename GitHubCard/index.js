@@ -29,15 +29,7 @@
     user, and adding that card to the DOM.
 */
 
-const followersArray = [
-  'sfritz24',
-  'tetondan',
-  'dustinmyers',
-  'justsml',
-  'luishrd',
-  'bigknell',
-  'garybot'
-];
+const followersArray = ['sfritz24'];
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
@@ -119,6 +111,26 @@ function cardMaker(data){
   return card;
 };
 
+function getFollowers(){
+  axios.get('https://api.github.com/users/sfritz24/followers')
+  .then(response =>{
+    // console.log(response)
+    const data = response.data
+    // console.log(data)
+    data.forEach(item =>{
+      const userNames = item.login
+      followersArray.push(userNames)
+    })
+  })
+  .catch(error =>{
+    console.log(error)
+  })
+}
+
+// getFollowers()
+followersArray.push(getFollowers())
+console.log(followersArray)
+
 /*
   List of LS Instructors Github username's:
     tetondan
@@ -140,10 +152,6 @@ function getProfiles(username){
   })
 };
 
-getProfiles(followersArray[0])
-getProfiles(followersArray[1])
-getProfiles(followersArray[2])
-getProfiles(followersArray[3])
-getProfiles(followersArray[4])
-getProfiles(followersArray[5])
-getProfiles(followersArray[6])
+followersArray.forEach(item =>{
+  getProfiles(item)
+})
